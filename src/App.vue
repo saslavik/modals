@@ -1,17 +1,33 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="wrapper">
+    <div class="wrapper-content">
+
+      <section>
+        <div class="container">
+          <button class="btn btnPrimary" @click="modalFirst = true">Show first modal</button>
+          <!-- first modal -->
+          <modal
+          title="First Modal"
+          v-if="modalFirst"
+          @close="modalFirst = false"></modal>
+        </div>
+      </section>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import modal from '@/components/Modal.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    modal,
+  },
+  data() {
+    return {
+      modalFirst: false,
+    };
   },
 };
 </script>
@@ -21,8 +37,5 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
